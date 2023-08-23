@@ -1,19 +1,20 @@
 {
-  "name": "housetable",
-  "version": "1.0.0",
-  "description": "Home evaluation system",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abrahammurciano/housetable.git"
-  },
-  "author": "Abraham Murciano",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/abrahammurciano/housetable/issues"
-  },
-  "homepage": "https://github.com/abrahammurciano/housetable#readme"
+	"name": "housetable",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "concurrently \"cd server ; npm run build\" \"cd client ; npm run build\"",
+		"start": "node server/dist/index.js",
+		"dev": "concurrently \"cd server ; npm run dev\" \"cd client ; npm run dev\"",
+		"test": "cd server && npm run test"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/mocha": "^10.0.1",
+		"concurrently": "^8.2.1",
+		"typescript": "^5.1.6"
+	}
 }

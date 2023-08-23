@@ -1,0 +1,19 @@
+{
+  "name": "housetable",
+  "version": "1.0.0",
+  "description": "Home evaluation system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrahammurciano/housetable.git"
+  },
+  "author": "Abraham Murciano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abrahammurciano/housetable/issues"
+  },
+  "homepage": "https://github.com/abrahammurciano/housetable#readme"
+}

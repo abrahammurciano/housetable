@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import House from "../../src/models/House";
-import app from "../../src/app";
+import House from "../src/models/House";
+import app from "../src/app";
 import client from "supertest";
 import './setup';
 

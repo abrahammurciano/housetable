@@ -1,8 +1,8 @@
 import { expect } from "chai";
-import app from "../../src/app";
+import app from "../src/app";
 import client from "supertest";
 import './setup';
-import House from "../../src/models/House";
+import House from "../src/models/House";
 
 
 describe("PUT /api/houses/:id", () => {

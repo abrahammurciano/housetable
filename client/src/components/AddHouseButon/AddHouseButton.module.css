@@ -1,0 +1,7 @@
+.AddHouseButton .Label {
+	width: 0;
+}
+
+.AddHouseButton:hover .Label {
+	width: 180px;
+}

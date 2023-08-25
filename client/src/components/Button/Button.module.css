@@ -1,0 +1,10 @@
+.Button {
+	background-color: var(--secondary);
+	color: white;
+}
+
+.Button:hover,
+.Button.disabled {
+	background-color: transparent;
+	color: var(--secondary);
+}

@@ -1,5 +1,5 @@
 
-import sequelize from "../../src/sequelize";
+import sequelize from "../src/sequelize";
 import chai from "chai";
 
 chai.config.truncateThreshold = Infinity;

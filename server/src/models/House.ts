@@ -1,41 +1,63 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../sequelize";
+import { Column, Table, Model, AllowNull, NotEmpty, Min, Max } from "sequelize-typescript";
+import { IsType, asNumber } from "../validators";
+import { DataTypes } from "sequelize";
 
-
-export default class House extends Model {
-	declare id: number;
-	declare address: string;
-	declare currentValue: number;
-	declare loanAmount: number;
-	declare risk: number;
+export interface HouseCreationAttributes {
+	address: string;
+	currentValue: number;
+	loanAmount: number;
+	risk: number;
 }
 
-House.init({
-	id: {
-		type: DataTypes.INTEGER,
-		autoIncrement: true,
-		primaryKey: true,
-	},
-	address: {
-		type: DataTypes.STRING,
-		allowNull: false,
-	},
-	currentValue: {
-		type: DataTypes.FLOAT,
-		allowNull: false
-	},
-	loanAmount: {
-		type: DataTypes.FLOAT,
-		allowNull: false,
-	},
-	risk: {
-		type: DataTypes.FLOAT,
-		allowNull: false,
-		validate: {
-			min: 0,
-			max: 1,
-		},
+export interface HouseAttributes extends HouseCreationAttributes {
+	id: number;
+}
+
+@Table
+export default class House extends Model<HouseAttributes, HouseCreationAttributes> {
+
+	@AllowNull(false)
+	@NotEmpty
+	@IsType("string", "address")
+	@Column
+	address: string;
+
+	@AllowNull(false)
+	@NotEmpty
+	@IsType("number", "currentValue")
+	@Column(DataTypes.NUMBER)
+	// currentValue: number;
+	get currentValue(): number {
+		return this.getDataValue("currentValue");
 	}
-}, {
-	sequelize: sequelize,
-});
+
+	set currentValue(value: any) {
+		this.setDataValue("currentValue", asNumber(value) ?? value);
+	}
+
+	@AllowNull(false)
+	@NotEmpty
+	@IsType("number", "loanAmount")
+	@Column(DataTypes.NUMBER)
+	get loanAmount(): number {
+		return this.getDataValue("loanAmount");
+	}
+
+	set loanAmount(value: any) {
+		this.setDataValue("loanAmount", asNumber(value) ?? value);
+	}
+
+	@AllowNull(false)
+	@NotEmpty
+	@IsType("number", "risk")
+	@Min(0)
+	@Max(1)
+	@Column(DataTypes.NUMBER)
+	get risk(): number {
+		return this.getDataValue("risk");
+	}
+
+	set risk(value: any) {
+		this.setDataValue("risk", asNumber(value) ?? value);
+	}
+}

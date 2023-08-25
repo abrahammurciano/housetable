@@ -36,7 +36,7 @@ router.post("/houses", (req, res) => {
 			if (error instanceof ValidationError) {
 				res.status(400).json({ errors: error.errors.map((err) => err.message) });
 			} else {
-				res.status(500).json({ error: "An error occurred while creating the house." });
+				res.status(500).json({ errors: ["An error occurred while creating the house."] });
 			}
 		}
 	})();
@@ -62,7 +62,7 @@ router.put("/houses/:id", (req, res) => {
 			if (error instanceof ValidationError) {
 				res.status(400).json({ errors: error.errors.map((err) => err.message) });
 			} else {
-				res.status(500).json({ error: "An error occurred while updating the house." });
+				res.status(500).json({ errors: ["An error occurred while updating the house."] });
 			}
 		}
 	})();

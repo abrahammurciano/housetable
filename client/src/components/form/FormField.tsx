@@ -50,7 +50,7 @@ export default class FormField extends Component<FormFieldProps, {}> {
 
 	override render() {
 		return (
-			<div style={style} className="form-field">
+			<div style={style}>
 				<FormLabel name={this.props.name} label={this.props.label}></FormLabel>
 				<div style={inputFrameStyle}>
 					{this.props.prefix && <div>{this.props.prefix}</div>}

@@ -13,9 +13,14 @@ describe("GET /api/houses", () => {
 			risk: 0.5,
 		}, {
 			address: "Address 2",
-			currentValue: 200000,
+			currentValue: 100000,
 			loanAmount: 100000,
-			risk: 0.5,
+			risk: 1,
+		}, {
+			address: "Address 2",
+			currentValue: 100000,
+			loanAmount: 80000,
+			risk: 0.88,
 		}
 	];
 
@@ -32,7 +37,11 @@ describe("GET /api/houses", () => {
 		expect(res.status).to.equal(200);
 		expect(res.body.length).to.equal(houses.length);
 		for (let i = 0; i < res.body.length; ++i) {
-			expect(res.body[i]).to.include(houses[i]);
+			const risk = houses[i].risk;
+			const withoutRisk: any = { ...houses[i] };
+			delete withoutRisk.risk;
+			expect(res.body[i]).to.include(withoutRisk);
+			expect(res.body[i].risk).to.be.closeTo(risk, 0.01);
 		}
 	});
 });

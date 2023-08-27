@@ -1,0 +1,7 @@
+.HouseTile {
+	scale: 1;
+}
+
+.HouseTile:hover {
+	scale: 1.3;
+}

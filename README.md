@@ -41,3 +41,9 @@ npm run dev
 ```bash
 npm test
 ```
+
+## Front end
+
+The front end has the following routes:
+
+- `/` - The home page. This shows a list of all the properties in the database, and provides a button redirecting to the `/house/new` page.

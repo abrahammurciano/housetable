@@ -9,10 +9,3 @@ export function IsType(type: Function | string, propertyName: string) {
 		throw new Error(`'${propertyName}' must be a ${name}, got ${typeof value} (${value})`);
 	});
 }
-
-export function asNumber(value: any): number | undefined {
-	if (typeof value === "string" && !isNaN(parseFloat(value))) {
-		return Number(value);
-	}
-	return undefined;
-}

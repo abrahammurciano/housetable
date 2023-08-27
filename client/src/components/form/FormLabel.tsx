@@ -1,7 +1,7 @@
 import { CSSProperties, Component } from "react";
 
 interface FormFieldProps {
-	name: string;
+	name?: string;
 	label?: string;
 }
 

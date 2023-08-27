@@ -11,7 +11,6 @@ describe("PUT /api/houses/:id", () => {
 		address: "Address 1",
 		currentValue: 100000,
 		loanAmount: 50000,
-		risk: 0.5,
 	};
 
 	beforeEach(async () => {
@@ -27,7 +26,6 @@ describe("PUT /api/houses/:id", () => {
 			address: "Updated Address",
 			currentValue: 120000,
 			loanAmount: 60000,
-			risk: 0.7,
 		};
 		const res = await client(app).put(`/api/houses/${house.id}`).send(updatedHouse);
 		expect(res.status).to.equal(200);
@@ -40,30 +38,17 @@ describe("PUT /api/houses/:id", () => {
 			address: "Updated Address",
 			currentValue: 120000,
 			loanAmount: 60000,
-			risk: 0.7,
 		};
 		const res = await client(app).put(`/api/houses/${fakeId}`).send(updatedHouse);
 		expect(res.status).to.equal(404);
 	});
 
-	it("should return a 400 error if risk is not between 0 and 1", async () => {
-		const updatedHouse = {
-			address: "Updated Address",
-			currentValue: 120000,
-			loanAmount: 60000,
-			risk: 1.5,
-		};
-		const res = await client(app).put(`/api/houses/${house.id}`).send(updatedHouse);
-		expect(res.status).to.equal(400);
-	});
-
-	for (const field of ["address", "currentValue", "loanAmount", "risk"]) {
+	for (const field of ["address", "currentValue", "loanAmount"]) {
 		it(`should update only the ${field} field`, async () => {
 			const updatedHouse: any = {
 				address: "Updated Address",
 				currentValue: 120000,
 				loanAmount: 60000,
-				risk: 0.7,
 			};
 			const res = await client(app).put(`/api/houses/${house.id}`).send({ [field]: updatedHouse[field] });
 			expect(res.status).to.equal(200);

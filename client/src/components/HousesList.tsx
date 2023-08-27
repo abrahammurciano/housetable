@@ -1,6 +1,6 @@
 import { Component } from "react";
 import House from "../models/House";
-import HouseTile from "./HouseTile";
+import HouseTile from "./HouseTile/HouseTile";
 import Colours from "../Colours";
 
 const style: React.CSSProperties = {

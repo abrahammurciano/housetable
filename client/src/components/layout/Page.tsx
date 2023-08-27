@@ -2,6 +2,7 @@ import { CSSProperties, Component, ReactNode } from "react";
 import Header from "./header/Header";
 import Footer from "./Footer";
 import MainCard from "./MainCard";
+import AddHouseButton from "../AddHouseButon/AddHouseButton";
 
 interface PageProps {
 	maxCardWidth?: number;
@@ -22,6 +23,7 @@ class Page extends Component<PageProps, {}> {
 				<Header maxHeight={300} />
 				<MainCard maxWidth={this.props.maxCardWidth}>
 					{this.props.children}
+					<AddHouseButton />
 				</MainCard>
 				<Footer />
 			</div>
